@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>オーダーインソールLP デザイン案</title>
+  <style>
+    :root {
+      --green: #1f6f3a;
+      --deep-green: #153f2a;
+      --light-green: #e8f0e4;
+      --brown: #8a6238;
+      --gold: #d9a22e;
+      --ink: #333333;
+      --text: #666666;
+      --bg: #f7f8f4;
+      --white: #ffffff;
+      --line: #d9ded3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #dfe4dc;
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.8;
+    }
+
+    .preview-shell {
+      width: min(100%, 430px);
+      margin: 0 auto;
+      background: var(--bg);
+      min-height: 100vh;
+      box-shadow: 0 0 36px rgba(21, 63, 42, 0.18);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 28px 22px 34px;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(31, 111, 58, 0.96), rgba(21, 63, 42, 0.94)),
+        radial-gradient(circle at 85% 20%, rgba(217, 162, 46, 0.45), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      bottom: -48px;
+      width: 190px;
+      height: 190px;
+      border-radius: 999px;
+      background: rgba(138, 98, 56, 0.55);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      position: relative;
+      z-index: 1;
+      padding: 5px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.35;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      font-size: 34px;
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 1;
+      margin: 14px 0 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+    }
+
+    .hero-visual {
+      position: relative;
+      z-index: 1;
+      margin: 22px 0 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--green);
+    }
+
+    .image-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+      border: 1px dashed rgba(31, 111, 58, 0.45);
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(232, 240, 228, 0.9), rgba(255, 255, 255, 0.85));
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .cta-row {
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      margin-top: 18px;
+    }
+
+    .button {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 999px;
+      text-align: center;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: var(--deep-green);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      color: var(--white);
+    }
+
+    .section {
+      padding: 42px 22px;
+    }
+
+    .section.green {
+      background: var(--light-green);
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      font-size: 27px;
+      color: var(--deep-green);
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .worry-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .worry-item,
+    .card,
+    .plan,
+    .step {
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
+    }
+
+    .worry-item {
+      padding: 14px 15px;
+      border-left: 5px solid var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .pill-title {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .compare {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .compare-card {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .compare-card.recommend {
+      border: 2px solid var(--green);
+    }
+
+    .compare-card strong {
+      display: block;
+      color: var(--green);
+      font-size: 16px;
+    }
+
+    .compare-card span {
+      display: block;
+      margin-top: 7px;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      padding: 15px;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 16px;
+      color: var(--deep-green);
+    }
+
+    .step p {
+      margin: 4px 0 0;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .plans {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .plan {
+      position: relative;
+      padding: 20px;
+      border: 1px solid var(--line);
+    }
+
+    .plan.featured {
+      border: 2px solid var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .badge {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--deep-green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .plan h3 {
+      margin: 0;
+      color: var(--deep-green);
+      font-size: 18px;
+    }
+
+    .price {
+      margin: 8px 0 10px;
+      color: var(--green);
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .plan p {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .voice-card {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .voice-media {
+      display: grid;
+      place-items: center;
+      height: 150px;
+      border-radius: 10px;
+      background: var(--light-green);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .voice-card p {
+      margin: 12px 0 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .final-cta {
+      padding: 42px 22px;
+      color: var(--white);
+      background: var(--deep-green);
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 27px;
+    }
+
+    .final-cta p {
+      margin: 15px 0 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 14px;
+    }
+
+    @media (min-width: 720px) {
+      .preview-shell {
+        width: min(100%, 760px);
+      }
+
+      .hero,
+      .section,
+      .final-cta {
+        padding-left: 46px;
+        padding-right: 46px;
+      }
+
+      .feature-grid,
+      .plans {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cta-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="preview-shell">
+    <section class="hero">
+      <span class="eyebrow">整体施術 × オーダーインソール × セルフケア指導</span>
+      <h1>くり返す痛みに、<br>足元と習慣から整える。</h1>
+      <p class="hero-sub">通わない整体を選びたい方へ。</p>
+      <p class="hero-text">整体師の視点で身体を評価し、オーダーインソールとセルフケアで日常の動きから整える身体づくりをサポートします。</p>
+      <div class="hero-visual">
+        <div class="image-placeholder">ファーストビュー画像<br>施術風景・歩行評価・インソール</div>
+      </div>
+      <div class="cta-row">
+        <a class="button primary" href="#">LINEで相談する</a>
+        <a class="button secondary" href="#">インソール作成を予約する</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="pill-title">こんなお悩みに</span>
+      <h2 class="section-title">整体に通っても、数日すると戻ってしまう方へ。</h2>
+      <p class="lead">腰・膝・足の痛みは、痛みのある場所だけが原因とは限りません。足元、重心、姿勢、歩き方、日常習慣まで含めて身体を見直します。</p>
+      <div class="worry-list">
+        <div class="worry-item">歩くたびに腰・膝・足の痛みが気になる</div>
+        <div class="worry-item">立ち仕事や移動が多く、夕方になると身体がつらい</div>
+        <div class="worry-item">市販インソールや靴選びでしっくりこなかった</div>
+        <div class="worry-item">何度も通わず、自分でも整えられる身体を目指したい</div>
+      </div>
+    </section>
+
+    <section class="section green">
+      <span class="pill-title">サービスの特徴</span>
+      <h2 class="section-title">足元から、身体の使い方まで見直す。</h2>
+      <div class="feature-grid">
+        <article class="card">
+          <h3>整体施術</h3>
+          <p>重心、姿勢、関節の動き、筋肉の緊張、歩き方のクセなどを確認します。</p>
+        </article>
+        <article class="card">
+          <h3>オーダーインソール</h3>
+          <p>身体評価と歩行分析をもとに、足元から日常の動きをサポートします。</p>
+        </article>
+        <article class="card">
+          <h3>セルフケア指導</h3>
+          <p>通院に頼りきらず、自宅で続けられるケアと習慣づくりをお伝えします。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="pill-title">比較</span>
+      <h2 class="section-title">一言でインソールでも、見る範囲が違います。</h2>
+      <div class="compare">
+        <div class="compare-card">
+          <strong>市販インソール</strong>
+          <span>履き心地・クッション性を手軽に試したい方向け。</span>
+        </div>
+        <div class="compare-card">
+          <strong>靴専門店のオーダーメイド</strong>
+          <span>足型・足圧・靴とのフィット感を整えたい方向け。</span>
+        </div>
+        <div class="compare-card recommend">
+          <strong>当サービス</strong>
+          <span>足・膝・股関節・骨盤・背骨・歩行・重心まで確認し、整体とセルフケアも含めてサポート。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green">
+      <span class="pill-title">施行・作成の流れ</span>
+      <h2 class="section-title">作って終わりではなく、使いこなすところまで。</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>
+            <h3>カウンセリング</h3>
+            <p>痛みが出る場面、生活習慣、運動歴などを確認します。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>
+            <h3>姿勢・重心・歩行評価</h3>
+            <p>足元から膝、股関節、骨盤、背骨の連動を確認します。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>
+            <h3>インソール作成・調整</h3>
+            <p>立ち方や歩き方の変化を見ながら必要な微調整を行います。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <span class="pill-title">メニュー・料金</span>
+      <h2 class="section-title">目的に合わせて選べる3つのプラン</h2>
+      <div class="plans">
+        <article class="plan">
+          <h3>インソール作成のみ</h3>
+          <div class="price">18,000円</div>
+          <p>まずは足元から姿勢や歩き方を見直したい方へ。</p>
+        </article>
+        <article class="plan featured">
+          <span class="badge">人気No.1</span>
+          <h3>整体3回＋インソール</h3>
+          <div class="price">39,000円</div>
+          <p>身体の変化を確認しながら、短期集中で整えたい方へ。</p>
+        </article>
+        <article class="plan">
+          <h3>整体＋インソール</h3>
+          <div class="price">26,000円</div>
+          <p>身体の状態を整えたうえで作成したい方へ。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section green">
+      <span class="pill-title">お客様の声</span>
+      <h2 class="section-title">動画・写真・口コミを後から追加できます。</h2>
+      <article class="voice-card">
+        <div class="voice-media">動画または写真枠</div>
+        <p>現在、体験された方の声を準備中です。歩きやすさ、姿勢の変化、日常生活で感じた変化などを掲載予定です。</p>
+      </article>
+    </section>
+
+    <section class="final-cta">
+      <h2>通い続ける整体から、<br>日常で整える整体へ。</h2>
+      <p>まずは現在のお悩みをお聞かせください。あなたの身体に合ったプランをご提案します。</p>
+      <div class="cta-row">
+        <a class="button primary" href="#">LINEで相談する</a>
+        <a class="button secondary" href="#">インソール作成を予約する</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
