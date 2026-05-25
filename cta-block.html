@@ -1,0 +1,437 @@
+﻿<style>
+    :root {
+      --green: #1f6f3a;
+      --deep-green: #153f2a;
+      --light-green: #e8f0e4;
+      --pale-green: #f7f8f4;
+      --brown: #8a6238;
+      --gold: #d9a22e;
+      --ink: #333333;
+      --text: #666666;
+      --line: #d8ded2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #dfe4dc;
+      color: var(--ink);
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.85;
+    }
+
+    .lp {
+      width: min(100%, 430px);
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--pale-green);
+      box-shadow: 0 0 36px rgba(21, 63, 42, 0.18);
+    }
+
+    .section {
+      padding: 48px 22px;
+      background: var(--pale-green);
+    }
+
+    .section:nth-of-type(even) {
+      background: var(--light-green);
+    }
+
+    .hero {
+      position: relative;
+      padding: 30px 22px 40px;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(31, 111, 58, 0.97), rgba(21, 63, 42, 0.96)),
+        radial-gradient(circle at 85% 18%, rgba(217, 162, 46, 0.35), transparent 32%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -58px;
+      bottom: -54px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(138, 98, 56, 0.58);
+    }
+
+    .hero-inner,
+    .final-cta-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .label {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .hero .label {
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.42;
+    }
+
+    h1 {
+      color: var(--white);
+      font-size: 34px;
+    }
+
+    h2 {
+      color: var(--deep-green);
+      font-size: 27px;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--deep-green);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .hero p,
+    .final-cta p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .sub-copy {
+      margin-top: 14px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .copy-block {
+      display: grid;
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .cta-row {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 999px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: var(--deep-green);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .visual {
+      margin: 22px 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 12px 28px rgba(21, 63, 42, 0.1);
+    }
+
+    .hero .visual {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .hero .visual img {
+      aspect-ratio: 4 / 5;
+    }
+
+    .placeholder {
+      display: none;
+      min-height: 180px;
+      place-items: center;
+      padding: 24px;
+      border: 1px dashed rgba(31, 111, 58, 0.45);
+      border-radius: 12px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .visual.is-missing img {
+      display: none;
+    }
+
+    .visual.is-missing .placeholder {
+      display: grid;
+    }
+
+    .list,
+    .cards,
+    .plans,
+    .steps,
+    .voices,
+    .faqs,
+    .compare-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .item,
+    .card,
+    .plan,
+    .step,
+    .voice,
+    .faq,
+    .compare-card {
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
+    }
+
+    .item {
+      position: relative;
+      padding: 14px 15px 14px 44px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px var(--light-green);
+    }
+
+    .card,
+    .plan,
+    .voice,
+    .faq,
+    .compare-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+    }
+
+    .card p,
+    .plan p,
+    .voice p,
+    .faq p,
+    .compare-card p {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .compare-card.featured,
+    .plan.featured {
+      border: 2px solid var(--gold);
+      box-shadow: 0 14px 30px rgba(217, 162, 46, 0.2);
+    }
+
+    .badge {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--deep-green);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .price {
+      margin: 8px 0 10px;
+      color: var(--green);
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .voice-media {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      background: var(--light-green);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .faq h3 {
+      font-size: 16px;
+    }
+
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 22px;
+      color: var(--white);
+      text-align: center;
+      background:
+        linear-gradient(rgba(21, 63, 42, 0.88), rgba(21, 63, 42, 0.92)),
+        url("cta-bg.jpg") center / cover;
+    }
+
+    .final-cta h2 {
+      color: var(--white);
+    }
+
+    @media (min-width: 720px) {
+      .lp {
+        width: min(100%, 920px);
+      }
+
+      .hero,
+      .section,
+      .final-cta {
+        padding-left: 54px;
+        padding-right: 54px;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 0.82fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .hero .visual {
+        margin-top: 0;
+      }
+
+      .cards,
+      .plans,
+      .voices,
+      .compare-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+<div class="lp">
+    <section class="section">
+      <span class="label">よくある質問</span>
+      <h2>よくある質問</h2>
+      <div class="faqs">
+        <article class="faq"><h3>Q. インソール作成だけでも受けられますか？</h3><p>もちろん、可能です。<br>ただし、痛みや身体のクセが強い方は、整体と組み合わせた方が身体の状態を確認しながら進めやすくなります。</p></article>
+        <article class="faq"><h3>Q. どんな靴に入れられますか？</h3><p>基本的には、取り外し可能な中敷きが入っている靴が適しています。<br>当日は普段よく履く靴をお持ちください。</p></article>
+        <article class="faq"><h3>Q. インソールの耐久期間はどれぐらいですか？</h3><p>一般的な日常生活でしたら、約2年ほど。<br>スポーツをしっかりされている方は、約1年ほどを目安にしてもらえたらと思います。</p></article>
+        <article class="faq"><h3>Q. その日に完成しますか？</h3><p>基本的には当日作成をしておりますが、<br>必要に応じて1週間ほど試し履きをしてもらい、微調整を行うこともあります。</p></article>
+        <article class="faq"><h3>Q. 痛みは必ず良くなりますか？</h3><p>身体の状態には個人差があるため、必ず変化を保証するものではありません。<br>ただし、足元・姿勢・重心・動きの評価を行い、現在の身体に合わせたサポートを提案します。</p></article>
+        <article class="faq"><h3>Q. 何回も通う必要がありますか？</h3><p>通い続けることを前提にはしていません。<br>必要な評価と調整を行い、ご自身でも整えられるようにセルフケアをお伝えします。</p></article>
+      </div>
+    </section>
+    <section class="section">
+      <span class="label">プロフィール・想い</span>
+      <h2>痛みを、通院だけで終わらせないために。<br>足元と習慣から、日常を整えるサポートを。</h2>
+      <figure class="visual">
+        <img src="profile-thought.jpg" alt="プロフィール・想い" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">profile-thought.jpg<br>1200 x 800px<br>プロフィール・想い</figcaption>
+      </figure>
+      <div class="copy-block">
+        <p>はじめまして。<br>整体院晴々 上越院・長野院 院長の髙田諧志（たかた かいと）です。</p>
+        <p>私はこれまで12年以上、整体師として急性痛から慢性痛、原因がはっきりしない不調まで、さまざまなお悩みと向き合ってきました。現在も毎月250件ほどの施術に対応しながら、重心・姿勢・歩き方・筋肉や関節の動き・神経の働き・生活習慣まで含めて、身体を多角的に見ています。</p>
+        <p>私自身も過去に、生活習慣の乱れから心身の不調を経験し、眠れない、朝起きられない、気持ちまで落ち込むような時期がありました。</p>
+        <p>だからこそ、原因が分からないまま不調に悩み、痛みのない日常を諦めかけている方の力になりたいと考えています。</p>
+        <p>このサービスでは、整体施術・オーダーインソール・セルフケア指導を組み合わせ、足元と習慣から身体を見直していきます。</p>
+        <p>目指すのは、通い続ける整体ではなく、日常の中で自分の身体を整えられる状態です。</p>
+        <p>痛みをその場だけで終わらせず、安心して動ける毎日を一緒に目指していきましょう。</p>
+      </div>
+    </section>
+    <section class="final-cta">
+      <div class="final-cta-inner">
+        <span class="label">最後のCTA</span>
+        <h2>通い続ける整体から、日常で整える整体へ。</h2>
+        <div class="copy-block">
+          <p>早く痛みをなんとかしたい。<br>また、痛みをその場だけで終わらせず、<br>足元・姿勢・歩き方・習慣から整えたい方へ。</p>
+          <p>まずは現在のお悩みをお聞かせください。<br>あなたの身体に合ったプランをご提案します。</p>
+        </div>
+        <div class="cta-row">
+          <a class="button primary" href="#">LINEで相談する</a>
+          <a class="button secondary" href="#">インソール作成を予約する</a>
+        </div>
+      </div>
+    </section>
+</div>
