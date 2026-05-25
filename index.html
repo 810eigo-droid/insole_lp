@@ -3,23 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>オーダーインソールLP デザイン案</title>
+  <title>オーダーインソールLP</title>
   <style>
     :root {
       --green: #1f6f3a;
       --deep-green: #153f2a;
       --light-green: #e8f0e4;
+      --pale-green: #f2f6ee;
       --brown: #8a6238;
       --gold: #d9a22e;
       --ink: #333333;
       --text: #666666;
+      --muted: #7c817a;
+      --line: #d8ded2;
       --bg: #f7f8f4;
       --white: #ffffff;
-      --line: #d9ded3;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -27,137 +33,170 @@
       background: #dfe4dc;
       color: var(--ink);
       font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-      line-height: 1.8;
+      line-height: 1.85;
     }
 
-    .preview-shell {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .lp {
       width: min(100%, 430px);
       margin: 0 auto;
+      overflow: hidden;
       background: var(--bg);
-      min-height: 100vh;
       box-shadow: 0 0 36px rgba(21, 63, 42, 0.18);
     }
 
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 28px 22px 34px;
+    .section {
+      padding: 48px 22px;
+    }
+
+    .section.is-green {
+      background: var(--light-green);
+    }
+
+    .section.is-white {
+      background: var(--white);
+    }
+
+    .section.is-deep {
       color: var(--white);
-      background:
-        linear-gradient(135deg, rgba(31, 111, 58, 0.96), rgba(21, 63, 42, 0.94)),
-        radial-gradient(circle at 85% 20%, rgba(217, 162, 46, 0.45), transparent 34%);
+      background: var(--deep-green);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: -52px;
-      bottom: -48px;
-      width: 190px;
-      height: 190px;
-      border-radius: 999px;
-      background: rgba(138, 98, 56, 0.55);
-    }
-
-    .eyebrow {
+    .kicker {
       display: inline-flex;
-      position: relative;
-      z-index: 1;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
       padding: 5px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 999px;
+      background: var(--green);
+      color: var(--white);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .kicker.is-gold {
+      background: var(--gold);
+      color: var(--deep-green);
     }
 
     h1,
     h2 {
       margin: 0;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
       font-weight: 700;
       letter-spacing: 0;
-      line-height: 1.35;
+      line-height: 1.42;
     }
 
     h1 {
+      font-size: 34px;
+      color: var(--white);
+    }
+
+    h2 {
+      font-size: 27px;
+      color: var(--deep-green);
+    }
+
+    .section.is-deep h2,
+    .hero h2 {
+      color: var(--white);
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--deep-green);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .section.is-deep p {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .lead {
+      margin-top: 16px;
+    }
+
+    .text-block {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .hero {
+      position: relative;
+      padding: 30px 22px 36px;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(31, 111, 58, 0.96), rgba(21, 63, 42, 0.96)),
+        radial-gradient(circle at 84% 12%, rgba(217, 162, 46, 0.34), transparent 34%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -58px;
+      bottom: -52px;
+      width: 196px;
+      height: 196px;
+      border-radius: 50%;
+      background: rgba(138, 98, 56, 0.58);
+    }
+
+    .hero-inner {
       position: relative;
       z-index: 1;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      padding: 5px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.58);
+      border-radius: 999px;
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .hero h1 {
       margin-top: 22px;
-      font-size: 34px;
     }
 
     .hero-sub {
-      position: relative;
-      z-index: 1;
-      margin: 14px 0 0;
+      margin-top: 14px;
+      color: var(--white);
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .hero-text {
-      position: relative;
-      z-index: 1;
-      margin: 16px 0 0;
+    .hero-copy {
+      margin-top: 16px;
       color: rgba(255, 255, 255, 0.9);
       font-size: 14px;
-    }
-
-    .hero-visual {
-      position: relative;
-      z-index: 1;
-      margin: 22px 0 0;
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.94);
-      color: var(--green);
-    }
-
-    .image-placeholder {
-      display: grid;
-      place-items: center;
-      min-height: 190px;
-      border: 1px dashed rgba(31, 111, 58, 0.45);
-      border-radius: 12px;
-      background:
-        linear-gradient(135deg, rgba(232, 240, 228, 0.9), rgba(255, 255, 255, 0.85));
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .lp-image {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 14px;
-      object-fit: cover;
-    }
-
-    .hero-visual .lp-image {
-      aspect-ratio: 4 / 5;
-      max-height: 520px;
-    }
-
-    .section-image {
-      margin: 20px 0 22px;
-      overflow: hidden;
-      border-radius: 16px;
-      background: var(--white);
-      box-shadow: 0 12px 28px rgba(21, 63, 42, 0.1);
-    }
-
-    .section-image .lp-image {
-      aspect-ratio: 3 / 2;
     }
 
     .cta-row {
       display: grid;
       gap: 10px;
-      position: relative;
-      z-index: 1;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .button {
@@ -165,8 +204,9 @@
       padding: 14px 16px;
       border-radius: 999px;
       text-align: center;
-      font-weight: 800;
       text-decoration: none;
+      font-weight: 900;
+      line-height: 1.45;
     }
 
     .button.primary {
@@ -175,127 +215,167 @@
     }
 
     .button.secondary {
-      border: 1px solid rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.74);
       color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
     }
 
-    .section {
-      padding: 42px 22px;
-    }
-
-    .section.green {
-      background: var(--light-green);
-    }
-
-    .section-title {
-      margin-bottom: 18px;
-      font-size: 27px;
-      color: var(--deep-green);
-    }
-
-    .lead {
-      margin: 0;
-      color: var(--text);
-      font-size: 15px;
-    }
-
-    .worry-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .worry-item,
-    .card,
-    .plan,
-    .step {
-      border-radius: 14px;
-      background: var(--white);
-      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
-    }
-
-    .worry-item {
-      padding: 14px 15px;
-      border-left: 5px solid var(--green);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .pill-title {
-      display: inline-flex;
-      margin-bottom: 14px;
-      padding: 5px 12px;
-      border-radius: 999px;
+    .button.green {
       background: var(--green);
       color: var(--white);
-      font-size: 12px;
-      font-weight: 800;
     }
 
-    .feature-grid {
+    .visual {
+      position: relative;
+      margin: 22px 0 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, rgba(232, 240, 228, 0.94), rgba(255, 255, 255, 0.92));
+      box-shadow: 0 12px 28px rgba(21, 63, 42, 0.1);
+    }
+
+    .hero .visual {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .visual img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .hero .visual img {
+      aspect-ratio: 4 / 5;
+    }
+
+    .visual .placeholder {
+      display: none;
+      min-height: 190px;
+      place-items: center;
+      padding: 24px;
+      border: 1px dashed rgba(31, 111, 58, 0.45);
+      border-radius: 12px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .visual.is-missing img {
+      display: none;
+    }
+
+    .visual.is-missing .placeholder {
+      display: grid;
+    }
+
+    .cards,
+    .check-list,
+    .steps,
+    .plans,
+    .voice-grid,
+    .faq-list {
       display: grid;
       gap: 14px;
       margin-top: 22px;
+    }
+
+    .card,
+    .check,
+    .step,
+    .plan,
+    .voice-card,
+    .faq,
+    .compare-card {
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
     }
 
     .card {
       padding: 18px;
     }
 
-    .card h3 {
-      margin: 0 0 8px;
-      color: var(--green);
-      font-size: 18px;
-      line-height: 1.45;
-    }
-
     .card p {
-      margin: 0;
-      color: var(--text);
+      margin-top: 8px;
       font-size: 14px;
     }
 
-    .compare {
+    .check {
+      position: relative;
+      padding: 14px 15px 14px 44px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.65;
+    }
+
+    .check::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: 20px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 4px var(--light-green);
+    }
+
+    .compare-table {
       display: grid;
-      gap: 12px;
-      margin-top: 20px;
+      gap: 10px;
+      margin-top: 22px;
     }
 
     .compare-card {
       padding: 16px;
-      border-radius: 14px;
       border: 1px solid var(--line);
-      background: var(--white);
     }
 
-    .compare-card.recommend {
+    .compare-card.is-main {
       border: 2px solid var(--green);
     }
 
-    .compare-card strong {
-      display: block;
+    .compare-card .label {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--pale-green);
       color: var(--green);
-      font-size: 16px;
+      font-size: 12px;
+      font-weight: 900;
     }
 
-    .compare-card span {
-      display: block;
-      margin-top: 7px;
+    .compare-card dl {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+    }
+
+    .compare-card dt {
+      color: var(--deep-green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .compare-card dd {
+      margin: 2px 0 0;
       color: var(--text);
       font-size: 13px;
-    }
-
-    .steps {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
+      line-height: 1.65;
     }
 
     .step {
       display: grid;
-      grid-template-columns: 58px 1fr;
+      grid-template-columns: 56px 1fr;
       gap: 14px;
-      padding: 15px;
+      padding: 16px;
     }
 
     .step-number {
@@ -306,25 +386,15 @@
       border-radius: 12px;
       background: var(--green);
       color: var(--white);
+      font-size: 12px;
       font-weight: 900;
-    }
-
-    .step h3 {
-      margin: 0;
-      font-size: 16px;
-      color: var(--deep-green);
+      line-height: 1.25;
+      text-align: center;
     }
 
     .step p {
-      margin: 4px 0 0;
-      color: var(--text);
+      margin-top: 5px;
       font-size: 13px;
-    }
-
-    .plans {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
     }
 
     .plan {
@@ -333,9 +403,9 @@
       border: 1px solid var(--line);
     }
 
-    .plan.featured {
+    .plan.is-featured {
       border: 2px solid var(--gold);
-      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(217, 162, 46, 0.2);
     }
 
     .badge {
@@ -349,59 +419,141 @@
       font-weight: 900;
     }
 
-    .plan h3 {
-      margin: 0;
-      color: var(--deep-green);
-      font-size: 18px;
-    }
-
     .price {
       margin: 8px 0 10px;
       color: var(--green);
-      font-size: 27px;
+      font-size: 30px;
       font-weight: 900;
       line-height: 1.2;
     }
 
-    .plan p {
-      margin: 0;
+    .tax {
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .recommend-list {
+      display: grid;
+      gap: 7px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .recommend-list li {
       color: var(--text);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .recommend-list li::before {
+      content: "・";
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .timeline-item {
+      padding: 14px;
+      border-left: 5px solid var(--green);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--deep-green);
       font-size: 14px;
+    }
+
+    .timeline-item span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.65;
     }
 
     .voice-card {
       padding: 16px;
-      border-radius: 14px;
-      background: var(--white);
       border: 1px solid var(--line);
     }
 
     .voice-media {
       display: grid;
       place-items: center;
-      height: 150px;
-      border-radius: 10px;
+      min-height: 150px;
+      border-radius: 12px;
       background: var(--light-green);
       color: var(--green);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .voice-card h3 {
+      margin-top: 12px;
+      font-size: 16px;
     }
 
     .voice-card p {
-      margin: 12px 0 0;
-      color: var(--text);
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .faq {
+      padding: 17px;
+      border: 1px solid var(--line);
+    }
+
+    .faq h3 {
+      position: relative;
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .faq h3::before {
+      content: "Q";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .faq p {
+      margin-top: 8px;
+      padding-left: 30px;
       font-size: 14px;
+    }
+
+    .profile-box {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: 0 10px 24px rgba(21, 63, 42, 0.08);
+    }
+
+    .profile-box p + p {
+      margin-top: 14px;
     }
 
     .final-cta {
       position: relative;
       overflow: hidden;
-      padding: 42px 22px;
+      padding: 48px 22px;
       color: var(--white);
-      background:
-        linear-gradient(rgba(21, 63, 42, 0.86), rgba(21, 63, 42, 0.9)),
-        url("cta-bg.jpg") center / cover;
       text-align: center;
+      background:
+        linear-gradient(rgba(21, 63, 42, 0.88), rgba(21, 63, 42, 0.92)),
+        url("cta-bg.jpg") center / cover;
     }
 
     .final-cta > * {
@@ -410,30 +562,58 @@
     }
 
     .final-cta h2 {
-      font-size: 27px;
+      color: var(--white);
     }
 
     .final-cta p {
-      margin: 15px 0 0;
-      color: rgba(255, 255, 255, 0.88);
-      font-size: 14px;
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .image-list {
+      margin-top: 22px;
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+    }
+
+    .image-list p {
+      font-size: 13px;
     }
 
     @media (min-width: 720px) {
-      .preview-shell {
-        width: min(100%, 760px);
+      .lp {
+        width: min(100%, 920px);
       }
 
       .hero,
       .section,
       .final-cta {
-        padding-left: 46px;
-        padding-right: 46px;
+        padding-left: 54px;
+        padding-right: 54px;
       }
 
-      .feature-grid,
-      .plans {
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1fr 0.82fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .hero .visual {
+        margin-top: 0;
+      }
+
+      .cards,
+      .plans,
+      .voice-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .check-list,
+      .compare-table {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .cta-row {
@@ -443,152 +623,377 @@
   </style>
 </head>
 <body>
-  <main class="preview-shell">
+  <main class="lp">
     <section class="hero">
-      <span class="eyebrow">整体施術 × オーダーインソール × セルフケア指導</span>
-      <h1>くり返す痛みに、<br>足元と習慣から整える。</h1>
-      <p class="hero-sub">通わない整体を選びたい方へ。</p>
-      <p class="hero-text">整体師の視点で身体を評価し、オーダーインソールとセルフケアで日常の動きから整える身体づくりをサポートします。</p>
-      <div class="hero-visual">
-        <img class="lp-image" src="fv-main.jpg" alt="整体師による足元と歩行評価のイメージ">
-      </div>
-      <div class="cta-row">
-        <a class="button primary" href="#">LINEで相談する</a>
-        <a class="button secondary" href="#">インソール作成を予約する</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <span class="pill-title">こんなお悩みに</span>
-      <h2 class="section-title">整体に通っても、数日すると戻ってしまう方へ。</h2>
-      <p class="lead">腰・膝・足の痛みは、痛みのある場所だけが原因とは限りません。足元、重心、姿勢、歩き方、日常習慣まで含めて身体を見直します。</p>
-      <div class="worry-list">
-        <div class="worry-item">歩くたびに腰・膝・足の痛みが気になる</div>
-        <div class="worry-item">立ち仕事や移動が多く、夕方になると身体がつらい</div>
-        <div class="worry-item">市販インソールや靴選びでしっくりこなかった</div>
-        <div class="worry-item">何度も通わず、自分でも整えられる身体を目指したい</div>
+      <div class="hero-inner">
+        <div>
+          <span class="hero-label">整体施術 × オーダーインソール × セルフケア指導</span>
+          <h1>くり返す痛みに、足元と習慣から整える。</h1>
+          <p class="hero-sub">通わない整体を選びたい方へ。</p>
+          <p class="hero-copy">整体師の視点で身体を評価・施術し、<br>オーダーインソールで足元から日常の動きを支え、<br>セルフケアで「習慣から整える身体づくり」をサポートします。</p>
+          <div class="cta-row">
+            <a class="button primary" href="#">LINEで相談する</a>
+            <a class="button secondary" href="#">インソール作成を予約する</a>
+          </div>
+        </div>
+        <figure class="visual">
+          <img src="fv-main.jpg" alt="ファーストビュー画像" onerror="this.closest('.visual').classList.add('is-missing')">
+          <figcaption class="placeholder">fv-main.jpg<br>1080 x 1600px<br>ファーストビュー用</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section green">
-      <span class="pill-title">サービスの特徴</span>
-      <h2 class="section-title">足元から、身体の使い方まで見直す。</h2>
-      <div class="section-image">
-        <img class="lp-image" src="service-three.jpg" alt="整体施術、オーダーインソール、セルフケア指導のイメージ">
+    <section class="section is-white">
+      <span class="kicker">LPで伝えたい核</span>
+      <h2>痛みのある場所だけを見るのではなく、身体全体の使い方を見直すサービスです。</h2>
+      <div class="text-block">
+        <p>足元・重心・姿勢・歩き方・日常習慣まで含めて身体を見直すサービスです。</p>
+        <p>腰が痛い、膝が痛い、足が痛いという場合でも、その場所だけが原因とは限りません。</p>
+        <p>足裏から入る感覚、靴の中での重心、立ち方、歩き方、骨盤や背骨の使い方など、日常の身体の使い方が積み重なることで、負担が生まれることがあります。</p>
+        <p>そのため、当サービスでは、インソールを作って終わりではなく、必要に応じたコンディショニング整体・セルフケア指導まで含めて、日常の身体の使い方を見直していきます。</p>
+        <p>目指すのは、通い続ける整体ではなく、自分の身体を自分で整えられる状態です。</p>
       </div>
-      <div class="feature-grid">
+      <figure class="visual">
+        <img src="core-service.jpg" alt="身体全体の使い方を見直すイメージ" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">core-service.jpg<br>1200 x 800px<br>LPで伝えたい核</figcaption>
+      </figure>
+    </section>
+
+    <section class="section is-green">
+      <span class="kicker">想定するお悩み</span>
+      <h2>以下のような方に向けたLPです。</h2>
+      <div class="check-list">
+        <div class="check">整体に通っても、数日するとまた戻ってしまう</div>
+        <div class="check">腰・膝・足の痛みが、歩くたびに気になる</div>
+        <div class="check">立ち仕事や移動が多く、夕方になると身体がつらい</div>
+        <div class="check">靴や市販のインソール、シューズショップのオーダーメイドインソールを試したけれど、しっくりこない</div>
+        <div class="check">姿勢や歩き方を変えたいけれど、何から始めればいいかわからない</div>
+        <div class="check">できれば何度も通わず、自分でも整えられる身体を目指したい</div>
+        <div class="check">痛みのある場所だけでなく、身体全体の使い方を見直したい</div>
+      </div>
+      <figure class="visual">
+        <img src="problem-foot.jpg" alt="足腰のお悩みイメージ" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">problem-foot.jpg<br>1200 x 800px<br>お悩みセクション</figcaption>
+      </figure>
+    </section>
+
+    <section class="section is-white">
+      <span class="kicker">サービスの特徴</span>
+      <h2>整体施術、オーダーインソール、セルフケア指導を組み合わせます。</h2>
+      <figure class="visual">
+        <img src="service-three.jpg" alt="サービスの3本柱" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">service-three.jpg<br>1200 x 800px<br>サービスの3本柱</figcaption>
+      </figure>
+      <div class="cards">
         <article class="card">
           <h3>整体施術</h3>
-          <p>重心、姿勢、関節の動き、筋肉の緊張、歩き方のクセなどを確認します。</p>
+          <p>痛みのある場所だけでなく、重心、姿勢、関節の動き、筋肉の緊張、神経の問題、歩き方のクセなどを確認し、根本的な痛みの原因に対してもアプローチします。</p>
         </article>
         <article class="card">
           <h3>オーダーインソール</h3>
-          <p>身体評価と歩行分析をもとに、足元から日常の動きをサポートします。</p>
+          <p>身体評価、歩行分析をもとに、足元から身体の状態をサポートするインソールを作成します。</p>
+          <p>日常での痛みを緩和させて生活しやすくするだけではなく、歩く時間そのものを身体づくりの時間に変えていくことが可能です。</p>
         </article>
         <article class="card">
           <h3>セルフケア指導</h3>
-          <p>通院に頼りきらず、自宅で続けられるケアと習慣づくりをお伝えします。</p>
+          <p>身体の状態に合わせて、自宅で続けられるセルフケアをお伝えします。</p>
+          <p>通院に頼りきるのではなく、日常の中で自分の身体を整える習慣を作り、痛みを和らげて過ごしやすくすることを目的にしています。</p>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <span class="pill-title">なぜインソールなのか</span>
-      <h2 class="section-title">身体が唯一、地面とつながる場所。</h2>
-      <div class="section-image">
-        <img class="lp-image" src="why-insole.jpg" alt="足元とオーダーインソールのイメージ">
-      </div>
-      <p class="lead">立つ、歩く、階段をのぼる。日常の多くの動きは足元から始まります。足裏から入る感覚や靴の中での重心を見直すことは、姿勢や歩き方を整えるうえで大切です。</p>
-    </section>
-
-    <section class="section">
-      <span class="pill-title">比較</span>
-      <h2 class="section-title">一言でインソールでも、見る範囲が違います。</h2>
-      <div class="compare">
-        <div class="compare-card">
-          <strong>市販インソール</strong>
-          <span>履き心地・クッション性を手軽に試したい方向け。</span>
-        </div>
-        <div class="compare-card">
-          <strong>靴専門店のオーダーメイド</strong>
-          <span>足型・足圧・靴とのフィット感を整えたい方向け。</span>
-        </div>
-        <div class="compare-card recommend">
-          <strong>当サービス</strong>
-          <span>足・膝・股関節・骨盤・背骨・歩行・重心まで確認し、整体とセルフケアも含めてサポート。</span>
-        </div>
+    <section class="section is-green">
+      <span class="kicker">なぜインソールなのか？</span>
+      <h2>身体が唯一、地面とつながる場所。<br>それが足元です。</h2>
+      <figure class="visual">
+        <img src="why-insole.jpg" alt="足元とインソール" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">why-insole.jpg<br>1200 x 800px<br>なぜインソールなのか</figcaption>
+      </figure>
+      <div class="text-block">
+        <p>立つ、歩く、階段をのぼる、運動をする。日常のほとんどの動きは、足元から始まります。</p>
+        <p>足裏から入る感覚や、靴の中での重心は、姿勢や歩き方に大きく関わります。</p>
+        <p>だからこそ、足元を見直すことは、関節・筋肉・神経・姿勢・歩き方を見直すうえで重要です。</p>
+        <p>当サービスでは、足だけを見るのではなく、インソールを入れたときに身体全体の動きがどう変わるかを分析し、施行していきます。</p>
       </div>
     </section>
 
-    <section class="section green">
-      <span class="pill-title">施行・作成の流れ</span>
-      <h2 class="section-title">作って終わりではなく、使いこなすところまで。</h2>
-      <div class="section-image">
-        <img class="lp-image" src="flow-step.jpg" alt="カウンセリングからインソール作成までの流れのイメージ">
+    <section class="section is-white">
+      <span class="kicker">市販インソールとの違い</span>
+      <h2>足に入れるだけではなく、身体の使い方まで見直す。</h2>
+      <figure class="visual">
+        <img src="compare-commercial.jpg" alt="市販インソールとの違い" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">compare-commercial.jpg<br>1200 x 800px<br>市販インソールとの違い</figcaption>
+      </figure>
+      <div class="compare-table">
+        <article class="compare-card">
+          <span class="label">市販インソール</span>
+          <dl>
+            <div><dt>主な目的</dt><dd>履き心地・クッション性</dd></div>
+            <div><dt>作り方</dt><dd>既製品を選ぶ</dd></div>
+            <div><dt>見る範囲</dt><dd>足元中心</dd></div>
+            <div><dt>使用後</dt><dd>入れて使う</dd></div>
+            <div><dt>サポート</dt><dd>商品購入で終了しやすい</dd></div>
+          </dl>
+        </article>
+        <article class="compare-card is-main">
+          <span class="label">当サービス</span>
+          <dl>
+            <div><dt>主な目的</dt><dd>痛み・重心・動き・習慣の見直し</dd></div>
+            <div><dt>作り方</dt><dd>身体評価をもとに作成</dd></div>
+            <div><dt>見る範囲</dt><dd>足・膝・股関節・骨盤・背骨まで確認</dd></div>
+            <div><dt>使用後</dt><dd>立ち方・歩き方・動きの変化を確認</dd></div>
+            <div><dt>サポート</dt><dd>整体・セルフケアまで提案</dd></div>
+          </dl>
+        </article>
       </div>
+      <div class="text-block">
+        <p>市販インソールは、手軽に使えることや、クッション性、履き心地の改善を目的とする場合に便利です。</p>
+        <p>一方で、痛みや動きのクセに向き合う場合は、「どこを支えるか」だけでなく、その人の身体がどう動いているかを見る必要があります。</p>
+        <p>当サービスでは、立位・歩行・姿勢・痛みの出方を確認しながら、その方に必要な足元のサポートを考えていきます。</p>
+      </div>
+    </section>
+
+    <section class="section is-green">
+      <span class="kicker">シューズショップ屋さんとの違い</span>
+      <h2>一言でオーダーメイドでも、分析する視点が違います。</h2>
+      <figure class="visual">
+        <img src="compare-shoes.jpg" alt="靴専門店のオーダーメイドインソールとの違い" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">compare-shoes.jpg<br>1200 x 800px<br>靴専門店との違い</figcaption>
+      </figure>
+      <div class="text-block">
+        <p>オーダーメイドインソールと聞くと、「足型に合わせて作るもの」というイメージを持つ方が多いかもしれません。</p>
+        <p>もちろん、足の形や靴との相性はとても大切です。</p>
+        <p>シューズ専門店のオーダーメイドインソールは、足型・足圧・靴とのフィット感を整えたい方にとって心強い選択肢です。</p>
+        <p>一方で、当サービスが最も重要視しているのは、足に合っているかだけではなく、そのインソールを入れることで、身体全体の動きがどう変わるかです。</p>
+        <p>腰、膝、股関節、骨盤、背骨、重心、歩き方など。痛みや不調は、足だけでなく身体全体の連動の中で起きていることがあります。</p>
+        <p>そのため、当サービスではインソール作成に加えて、整体の視点でも姿勢・動作・重心・身体の使い方を確認し、必要に応じてコンディショニング整体とセルフケア指導まで行います。</p>
+        <p>靴に合わせるインソールではなく、その人の身体に適した状態に整えるインソール。それが、私が作るオーダーインソールの大きな違いです。</p>
+      </div>
+      <div class="compare-table">
+        <article class="compare-card">
+          <span class="label">市販インソール</span>
+          <dl>
+            <div><dt>主な目的</dt><dd>履き心地・クッション性</dd></div>
+            <div><dt>評価の中心</dt><dd>商品選び</dd></div>
+            <div><dt>作成方法</dt><dd>既製品を選ぶ</dd></div>
+            <div><dt>見る範囲</dt><dd>足元中心</dd></div>
+            <div><dt>使用後</dt><dd>入れて使う</dd></div>
+            <div><dt>向いている方</dt><dd>手軽に試したい方</dd></div>
+          </dl>
+        </article>
+        <article class="compare-card">
+          <span class="label">靴専門店のオーダーメイド</span>
+          <dl>
+            <div><dt>主な目的</dt><dd>足型・靴とのフィット感</dd></div>
+            <div><dt>評価の中心</dt><dd>足型・足圧・靴の状態</dd></div>
+            <div><dt>作成方法</dt><dd>足型計測や足圧計測など</dd></div>
+            <div><dt>見る範囲</dt><dd>足と靴中心</dd></div>
+            <div><dt>使用後</dt><dd>足に合わせて使う</dd></div>
+            <div><dt>向いている方</dt><dd>靴や足のフィット感を整えたい方</dd></div>
+          </dl>
+        </article>
+        <article class="compare-card is-main">
+          <span class="label">当サービス</span>
+          <dl>
+            <div><dt>主な目的</dt><dd>痛み・重心・動き・習慣の見直し</dd></div>
+            <div><dt>評価の中心</dt><dd>足・膝・股関節・骨盤・背骨・歩行・重心</dd></div>
+            <div><dt>作成方法</dt><dd>身体評価＋動作確認＋個別調整</dd></div>
+            <div><dt>見る範囲</dt><dd>身体全体の連動まで確認</dd></div>
+            <div><dt>使用後</dt><dd>インソール＋整体＋セルフケアで使いこなす</dd></div>
+            <div><dt>向いている方</dt><dd>痛みや身体を根本的に整えたい方</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <section class="section is-white">
+      <span class="kicker">こんな方におすすめ</span>
+      <h2>足元や歩き方から、身体の使い方を見直したい方へ。</h2>
+      <div class="check-list">
+        <div class="check">何度も整体に通うより、自分でも整えられる身体を目指したい方</div>
+        <div class="check">腰・膝・足などの痛みを、足元や歩き方から見直したい方</div>
+        <div class="check">立ち仕事、外回り、運動、旅行などを不安なく楽しみたい方</div>
+        <div class="check">市販のインソールや靴選びでしっくりこなかった方</div>
+        <div class="check">靴屋さんのインソールでは、身体全体の変化までは感じにくかった方</div>
+        <div class="check">施術だけでなく、原因分析やセルフケアまで知りたい方</div>
+        <div class="check">長期的に身体を良い状態で保ちたい方</div>
+      </div>
+    </section>
+
+    <section class="section is-green">
+      <span class="kicker">施行・作成の流れ</span>
+      <h2>写真は後から差し替えられるように、仮画像枠で設計しています。</h2>
+      <figure class="visual">
+        <img src="flow-step.jpg" alt="施行・作成の流れ" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">flow-step.jpg<br>1200 x 800px<br>施行・作成の流れ</figcaption>
+      </figure>
       <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div>
-            <h3>カウンセリング</h3>
-            <p>痛みが出る場面、生活習慣、運動歴などを確認します。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div>
-            <h3>姿勢・重心・歩行評価</h3>
-            <p>足元から膝、股関節、骨盤、背骨の連動を確認します。</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div>
-            <h3>インソール作成・調整</h3>
-            <p>立ち方や歩き方の変化を見ながら必要な微調整を行います。</p>
-          </div>
-        </div>
+        <article class="step"><div class="step-number">STEP<br>1</div><div><h3>カウンセリング</h3><p>現在のお悩み、痛みが出る場面、生活習慣、運動歴、ケガ歴などを確認します。</p></div></article>
+        <article class="step"><div class="step-number">STEP<br>2</div><div><h3>姿勢・重心・動作・歩行評価</h3><p>立ち方、歩き方、足元の使い方、膝・股関節・骨盤・背骨の連動などを重点的に細かく確認、分析します。</p></div></article>
+        <article class="step"><div class="step-number">STEP<br>3</div><div><h3>コンディショニング整体</h3><p>必要に応じて、筋・筋膜・関節・神経などを調整し、インソールがより合いやすい身体の土台に整えます。</p></div></article>
+        <article class="step"><div class="step-number">STEP<br>4</div><div><h3>オーダーインソール作成</h3><p>評価をもとに、足元から身体の使い方をサポートするインソールを作成します。</p></div></article>
+        <article class="step"><div class="step-number">STEP<br>5</div><div><h3>フィッティング・動作確認</h3><p>インソールを入れた状態で、立ち方・歩き方・痛みの出方・動きやすさを確認し、必要な微調整を行います。</p></div></article>
+        <article class="step"><div class="step-number">STEP<br>6</div><div><h3>セルフケア指導</h3><p>ご自宅でできるセルフケアや、日常で意識するポイントをお伝えします。</p></div></article>
       </div>
     </section>
 
-    <section class="section">
-      <span class="pill-title">メニュー・料金</span>
-      <h2 class="section-title">目的に合わせて選べる3つのプラン</h2>
+    <section class="section is-white">
+      <span class="kicker">メニュー・料金</span>
+      <h2>目的に合わせて選べる3つのプラン</h2>
+      <figure class="visual">
+        <img src="price-bg.jpg" alt="料金プランのイメージ" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">price-bg.jpg<br>1200 x 800px<br>料金セクション</figcaption>
+      </figure>
       <div class="plans">
         <article class="plan">
           <h3>インソール作成のみ</h3>
-          <div class="price">18,000円</div>
-          <p>まずは足元から姿勢や歩き方を見直したい方へ。</p>
+          <div class="price">18,000円 <span class="tax">税込</span></div>
+          <p>足元から姿勢や歩き方を見直したい方へ。身体評価をもとに、現在の状態に合わせたオーダーインソールを作成します。</p>
+          <ul class="recommend-list">
+            <li>まずはインソールを試したい</li>
+            <li>足元から痛みや不調を見直したい</li>
+            <li>今までのインソールが合わなかった</li>
+            <li>歩き方や重心を変えたい</li>
+          </ul>
         </article>
-        <article class="plan featured">
-          <span class="badge">人気No.1</span>
-          <h3>整体3回＋インソール</h3>
-          <div class="price">39,000円</div>
-          <p>身体の変化を確認しながら、短期集中で整えたい方へ。</p>
+        <article class="plan is-featured">
+          <span class="badge">人気No.1／おすすめプラン</span>
+          <h3>インソール作成＋コンディショニング整体3回</h3>
+          <div class="price">39,000円 <span class="tax">税込</span></div>
+          <p>インソール作成後も、身体の変化を確認しながらよりよく整えたい方へ。初回だけで終わらせず、根本的な見直しやパフォーマンスアップに向けて、サポートします。</p>
+          <ul class="recommend-list">
+            <li>今まで良くならなかった慢性的な痛みや不調がある</li>
+            <li>何度も戻る身体のクセを変えたい</li>
+            <li>セルフケアまでしっかり身につけたい</li>
+            <li>通い続けるより、短期集中で整えたい</li>
+          </ul>
         </article>
         <article class="plan">
-          <h3>整体＋インソール</h3>
-          <div class="price">26,000円</div>
-          <p>身体の状態を整えたうえで作成したい方へ。</p>
+          <h3>インソール作成＋コンディショニング整体</h3>
+          <div class="price">26,000円 <span class="tax">税込</span></div>
+          <p>身体の状態を整えたうえで、インソールを作成したい方へ。痛みや動きのクセを評価し、必要な整体を行ってから足元をサポートしていきます。</p>
+          <ul class="recommend-list">
+            <li>腰・膝・足など身体に痛み、不調がある</li>
+            <li>身体の歪みや重心の崩れも気になる</li>
+            <li>インソールが身体に合う状態を作りたい</li>
+            <li>その日の変化をしっかり確認したい</li>
+          </ul>
         </article>
       </div>
     </section>
 
-    <section class="section green">
-      <span class="pill-title">お客様の声</span>
-      <h2 class="section-title">動画・写真・口コミを後から追加できます。</h2>
-      <article class="voice-card">
-        <div class="voice-media">動画または写真枠</div>
-        <p>現在、体験された方の声を準備中です。歩きやすさ、姿勢の変化、日常生活で感じた変化などを掲載予定です。</p>
-      </article>
+    <section class="section is-green">
+      <span class="kicker">なぜ3回プランがおすすめなのか？</span>
+      <h2>身体は、1回で変わる部分と、習慣で変わる部分があります。</h2>
+      <figure class="visual">
+        <img src="three-plan.jpg" alt="3回プランのイメージ" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">three-plan.jpg<br>1200 x 800px<br>3回プラン説明</figcaption>
+      </figure>
+      <div class="text-block">
+        <p>インソールを入れることで、立ち方や歩き方に変化が出る方は少なくありません。</p>
+        <p>しかし、長年の身体のクセや生活習慣は、1回で完全に変わるものではなく、経過を追うことでより深い原因にもアプローチができます。</p>
+        <p>だからこそ、3回プランでは、作って終わりではなく、脳が身体を使いこなせる状態を目指します。</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><strong>1回目</strong><span>身体評価・初回整体調整・インソール作成</span></div>
+        <div class="timeline-item"><strong>2回目</strong><span>使用後の変化確認・整体調整・セルフケア修正</span></div>
+        <div class="timeline-item"><strong>3回目</strong><span>歩き方・姿勢・習慣の確認・より日常に合わせた整体調整</span></div>
+      </div>
+    </section>
+
+    <section class="section is-white">
+      <span class="kicker">専門家からの推薦の声</span>
+      <h2>推薦の声は、完成後に追加していきます。</h2>
+      <p class="lead">現在準備中です。専門家・同業者・関係者からの推薦文を順次掲載予定です。</p>
+      <div class="voice-grid">
+        <article class="voice-card">
+          <div class="voice-media">recommend-01.jpg<br>推薦者写真</div>
+          <h3>推薦者の写真・肩書き・推薦文・実績</h3>
+          <p>後から1名、2名、3名と増やせるカード型セクションです。</p>
+        </article>
+        <article class="voice-card">
+          <div class="voice-media">recommend-02.jpg<br>推薦者写真</div>
+          <h3>推薦文追加枠</h3>
+          <p>肩書き、氏名、実績、推薦文を掲載できます。</p>
+        </article>
+        <article class="voice-card">
+          <div class="voice-media">recommend-03.jpg<br>推薦者写真</div>
+          <h3>推薦文追加枠</h3>
+          <p>必要に応じてカードを増やせる設計です。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section is-green">
+      <span class="kicker">お客様の声</span>
+      <h2>動画埋め込み、写真＋文章、Google口コミ引用風に対応できます。</h2>
+      <p class="lead">現在、体験された方の声を準備中です。歩きやすさ、姿勢の変化、日常生活で感じた変化などを掲載予定です。</p>
+      <div class="voice-grid">
+        <article class="voice-card">
+          <div class="voice-media">voice-video-01.jpg<br>動画埋め込み枠</div>
+          <h3>動画でのお客様の声</h3>
+          <p>動画URLや埋め込みコードに差し替えられる余白を用意しています。</p>
+        </article>
+        <article class="voice-card">
+          <div class="voice-media">voice-photo-01.jpg<br>写真＋文章</div>
+          <h3>写真＋文章のお客様の声</h3>
+          <p>写真、年代、本文を掲載できるカードです。</p>
+        </article>
+        <article class="voice-card">
+          <div class="voice-media">voice-review-01.jpg<br>口コミ引用風</div>
+          <h3>Google口コミ引用風</h3>
+          <p>口コミの引用風デザインにも対応できるカードです。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section is-white">
+      <span class="kicker">よくある質問</span>
+      <h2>不安を解消するためのQ&A</h2>
+      <div class="faq-list">
+        <article class="faq"><h3>インソール作成だけでも受けられますか？</h3><p>もちろん、可能です。ただし、痛みや身体のクセが強い方は、整体と組み合わせた方が身体の状態を確認しながら進めやすくなります。</p></article>
+        <article class="faq"><h3>どんな靴に入れられますか？</h3><p>基本的には、取り外し可能な中敷きが入っている靴が適しています。当日は普段よく履く靴をお持ちください。</p></article>
+        <article class="faq"><h3>インソールの耐久期間はどれぐらいですか？</h3><p>一般的な日常生活でしたら、約2年ほど。スポーツをしっかりされている方は約1年ほどを目安にしてもらえたらと思います。</p></article>
+        <article class="faq"><h3>その日に完成しますか？</h3><p>基本的には当日作成をしておりますが、必要に応じて1週間ほど試し履きをしてもらい、微調整を行うこともあります。</p></article>
+        <article class="faq"><h3>痛みは必ず良くなりますか？</h3><p>身体の状態には個人差があるため、必ず変化を保証するものではありません。ただし、足元・姿勢・重心・動きの評価を行い、現在の身体に合わせたサポートをしっかりと提案します。</p></article>
+        <article class="faq"><h3>何回も通う必要がありますか？</h3><p>通い続けることを前提にはしていません。必要な評価と調整を行い、ご自身でも整えられるようにセルフケアをお伝えします。</p></article>
+      </div>
+    </section>
+
+    <section class="section is-green">
+      <span class="kicker">プロフィール・想い</span>
+      <h2>痛みを、通院だけで終わらせないために。</h2>
+      <figure class="visual">
+        <img src="profile-thought.jpg" alt="プロフィール画像" onerror="this.closest('.visual').classList.add('is-missing')">
+        <figcaption class="placeholder">profile-thought.jpg<br>1200 x 800px<br>プロフィール・想い</figcaption>
+      </figure>
+      <div class="profile-box">
+        <p>私はこれまで整体師として、痛みや不調に悩む多くの方の身体を見てきました。</p>
+        <p>その中で感じてきたのは、施術で身体が変わっても、日常の姿勢や歩き方、習慣が変わらなければ、また同じ負担が戻ってしまうということです。</p>
+        <p>だからこそ、これからは「整体に通う」だけではなく、「日常そのものを整える」ことが大切だと考えています。</p>
+        <p>オーダーインソールは、足元から身体を支えるひとつの方法です。そしてセルフケアは、自分の身体を自分で守るための習慣です。</p>
+        <p>整体、インソール、セルフケア。この3つを組み合わせることで、痛みに振り回される生活から、自分の身体に安心できる生活へ。その一歩をサポートします。</p>
+      </div>
     </section>
 
     <section class="final-cta">
-      <h2>通い続ける整体から、<br>日常で整える整体へ。</h2>
+      <span class="kicker is-gold">最後のCTA</span>
+      <h2>通い続ける整体から、日常で整える整体へ。</h2>
+      <p>早く痛みをなんとかしたい。<br>また、痛みをその場だけで終わらせず、足元・姿勢・歩き方・習慣から整えたい方へ。</p>
       <p>まずは現在のお悩みをお聞かせください。あなたの身体に合ったプランをご提案します。</p>
       <div class="cta-row">
         <a class="button primary" href="#">LINEで相談する</a>
         <a class="button secondary" href="#">インソール作成を予約する</a>
+      </div>
+    </section>
+
+    <section class="section is-white">
+      <span class="kicker">画像ファイル名一覧</span>
+      <h2>画像は同じフォルダに入れるだけで反映されます。</h2>
+      <div class="image-list">
+        <p>fv-main.jpg / core-service.jpg / problem-foot.jpg / service-three.jpg / why-insole.jpg / compare-commercial.jpg / compare-shoes.jpg / flow-step.jpg / price-bg.jpg / three-plan.jpg / profile-thought.jpg / cta-bg.jpg</p>
+        <p>推薦の声: recommend-01.jpg, recommend-02.jpg, recommend-03.jpg</p>
+        <p>お客様の声: voice-video-01.jpg, voice-photo-01.jpg, voice-review-01.jpg</p>
       </div>
     </section>
   </main>
